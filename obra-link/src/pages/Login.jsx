@@ -8,20 +8,32 @@ export default function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Validação simples
+
+    // Validação básica
     if (user.trim() === "" || pin.trim() === "") {
-      alert("Preencha todos os campos");
+      alert("⚠️ Preencha todos os campos para continuar!");
       return;
     }
-    // Salva login local (simulação)
+
+    if (pin.length < 4) {
+      alert("O PIN deve ter pelo menos 4 dígitos.");
+      return;
+    }
+
+    // Simulação de login (salva localmente)
     localStorage.setItem("user", JSON.stringify({ user, pin }));
+
+    // Redireciona
     navigate("/home");
   };
 
   return (
     <div style={styles.container}>
-      <h2>ObraLink</h2>
-      <p>Comunicação ágil entre canteiro e escritório</p>
+      <h2 style={styles.title}>ObraLink</h2>
+      <p style={styles.subtitle}>
+        Comunicação ágil entre canteiro e escritório
+      </p>
+
       <form onSubmit={handleLogin} style={styles.form}>
         <input
           type="text"
@@ -32,12 +44,19 @@ export default function Login() {
         />
         <input
           type="password"
-          placeholder="PIN"
+          placeholder="PIN de acesso"
           value={pin}
           onChange={(e) => setPin(e.target.value)}
           style={styles.input}
         />
-        <button style={styles.button}>Entrar</button>
+        <button
+          type="submit"
+          style={styles.button}
+          onMouseOver={(e) => (e.target.style.background = "#1d4ed8")}
+          onMouseOut={(e) => (e.target.style.background = "#2563eb")}
+        >
+          Entrar
+        </button>
       </form>
     </div>
   );
@@ -54,13 +73,26 @@ const styles = {
     color: "#fff",
     textAlign: "center",
   },
+  title: {
+    fontSize: "2rem",
+    marginBottom: "0.5rem",
+  },
+  subtitle: {
+    color: "#cbd5e1",
+    marginBottom: "2rem",
+  },
   form: {
     display: "flex",
     flexDirection: "column",
-    gap: "10px",
-    width: "250px",
+    gap: "12px",
+    width: "260px",
   },
-  input: { padding: "10px", borderRadius: "6px", border: "none" },
+  input: {
+    padding: "10px",
+    borderRadius: "6px",
+    border: "none",
+    outline: "none",
+  },
   button: {
     backgroundColor: "#2563eb",
     color: "white",
@@ -68,5 +100,7 @@ const styles = {
     borderRadius: "6px",
     padding: "10px",
     cursor: "pointer",
+    fontWeight: "bold",
+    transition: "0.3s",
   },
 };
