@@ -1,0 +1,15 @@
+.report-container {
+  padding: 20px;
+  background: #f8fafc;
+  min-height: 100vh;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.report-container h2 { text-align: center; margin-bottom: 20px; color: #1e293b; }
+.report-container label { display: block; margin-top: 10px; font-weight: bold; color: #334155; }
+.report-container input, .report-container textarea { width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1; margin-bottom: 10px; font-size: 16px; }
+.report-container textarea { height: 120px; }
+.report-container p { font-size: 14px; color: #475569; margin-bottom: 10px; }
+.report-container button { padding: 12px; background: #2563eb; color: white; border: none; border-radius: 8px; width: 100%; cursor: pointer; font-size: 16px; transition: 0.3s; }
+.report-container button:hover { background: #1d4ed8; }
+.report-container button:disabled { background: #94a3b8; cursor: not-allowed; }
