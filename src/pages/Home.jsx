@@ -24,7 +24,7 @@ export default function Home() {
       <p>Escolha uma ação:</p>
       <div className="home-menu">
         <button onClick={() => navigate("/report")}>Enviar Relatório Diário</button>
-        <button onClick={() => alert("Função em desenvolvimento")}>Solicitar Material</button>
+        <button onClick={() => navigate("/material")}>Solicitar Material</button> {/* corrigido */}
       </div>
       <button className="logout" onClick={logout}>Sair</button>
     </div>
